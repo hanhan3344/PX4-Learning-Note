@@ -20,4 +20,5 @@ PX4官方文档使用的QGC所以我们暂时使用QGC作为地面站. (不过�
     https://github.com/iwishiwasaneagle/MAVSDK-Proto/tree/mission_fixed_wing \
         **TODO**: 研究一下怎么使用
     - 解决方法2: 二次开发飞控, 浏览过论坛和github后, 得知是参数RTL_TYPE在某次更新变为了1(对固定翼来说更安全的返航方式), 网传改成0就好了(?)
-    - 解决方法3: 使用旧版飞控, 但是也不知道是那个版本...
+    - 解决方法3: 使用旧版飞控, 但是也不知道是那个版本...\
+        220704-1804: https://github.com/PX4/PX4-Autopilot/issues/13107
