@@ -1,7 +1,24 @@
 # 用于记录PX4学习的笔记
 ## 一. Ubuntu, PX4, Gazebo的安装
-Ubuntu(一个操作系统): CSDN随便看\
-PX4(飞控程序)+Gazebo(一个仿真环境): https://www.guyuehome.com/8983
+2022.7.5: protoc实在识别不到，所幸重装个系统，顺便写个ubuntu18.04安装PX4+ROS+Gazebo的教程.\
+- 本教程在装完系统, 换完镜像源, 打完显卡驱动, 安装完clash后开始记录, 基本与大多数人进程同步. 
+1. 加入ROS安装源\
+    `sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'`
+2. 加入密钥\
+    `sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654`
+3. 更新\
+    `sudo apt-get update`
+4. 安装ros\
+    `sudo apt-get install ros-melodic-desktop`
+5. Source ROS\
+    `echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc`\
+    `source ~/.bashrc`
+6. 安装Gazebo\
+    `sudo apt install ros-melodic-gazebo9*`
+7. 
+
+~~Ubuntu(一个操作系统): CSDN随便看~~\
+~~PX4(飞控程序)+Gazebo(一个仿真环境): https://www.guyuehome.com/8983~~
 ## 二. 地面站
 地面站在PC上获取飞控信息以及给PC发送指令等(通过数传或WIFI或数据线(?))
 常用地面站软件有有两种: QGroundControl(QGC)和MissionPlanner(MP)\
