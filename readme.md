@@ -53,7 +53,17 @@
 11. 下载编译px4\
     下载代码\
     `cd ~/catkin_ws/`\
-    `git clone https://github.com/PX4/Firmware`
+    `git clone https://github.com/PX4/Firmware`\
+    然后更新submodule切换固件并编译
+    `cd Firmware`\
+    `git submodule update --init --recursive`zhe yi hang fan fu yun xing zhi dao mei you bao cuo\
+12. 在具体编译前还需要安装相关的工具\
+    `sudo apt-get install python-jinja2`\
+    `sudo pip install numpy toml`\
+    ti shi sudo: pip：找不到命令 de hua xian an zhuang python-pip\
+13. 开始编译\
+    `make px4_sitl gazebo`
+
 
 
 ~~Ubuntu(一个操作系统): CSDN随便看~~\
