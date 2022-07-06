@@ -1,6 +1,6 @@
 # 用于记录PX4学习的笔记
 ## 一. Ubuntu, PX4, Gazebo的安装
-2022.7.5: protoc实在识别不到，所幸重装个系统，顺便写个ubuntu18.04安装PX4+ROS+Gazebo的教程.\
+2022.7.5: protoc实在识别不到，所幸重装个系统，顺便写个ubuntu18.04安装PX4+ROS+Gazebo的教程.
 - 本教程在装完系统, 换完镜像源, 打完显卡驱动, 安装完clash后开始记录, 基本与大多数人进程同步. 
 ### ROS及PX4环境搭建
 1. 加入ROS安装源\
@@ -17,7 +17,8 @@
 6. 安装Gazebo\
     `sudo apt install ros-melodic-gazebo9*`
 7. 初始化rosdep\
-    先安装rosdep`sudo apt-get install python-rosdep`\
+    先安装rosdep\
+    `sudo apt-get install python-rosdep`\
     `rosdep init`\
     `rosdep update`\
     init这一步可能会报错,像这样
@@ -54,23 +55,24 @@
     下载代码\
     `cd ~/catkin_ws/`\
     `git clone https://github.com/PX4/Firmware`\
-    然后更新submodule切换固件并编译
+    然后更新submodule切换固件并编译(我直接在master编译的)\
     `cd Firmware`\
-    `git submodule update --init --recursive`zhe yi hang fan fu yun xing zhi dao mei you bao cuo\
+    `git submodule update --init --recursive`\
+    这一行反复运行直到没有报错
 12. 在具体编译前还需要安装相关的工具\
     `sudo apt-get install python-jinja2`\
     `sudo pip install numpy toml`\
-    ti shi sudo: pip：找不到命令 de hua xian an zhuang python-pip\
+    若提示 `sudo: pip：找不到命令 `的话先安装`python-pip`
 13. 开始编译\
     `make px4_sitl gazebo_plane`\
-    ruo chu xian cuo wu\
-    `gzclient: symbol lookup error: /usr/lib/x86_64-linux-gnu/libgazebo_common.so.9: undefined symbol: _ZN8ignition10fuel_tools12ClientConfig12SetUserAgentERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE`
-    jie jue fang fa:\
+    若出现以下错误\
+    `gzclient: symbol lookup error: /usr/lib/x86_64-linux-gnu/libgazebo_common.so.9: undefined symbol: _ZN8ignition10fuel_tools12ClientConfig12SetUserAgentERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE`\
+    解决方法:\
     `sudo apt upgrade`\
-    zai ci bian yi ji ke cheng gong\
+    再次编译即可成功\
     `make clean`\
-    `make px4_sitl gazebo_plane`
-    zhi ci , qi dong cheng gong , jiao cheng jie shu
+    `make px4_sitl gazebo_plane`\
+    至此, 启动成功, 教程结束
 
 
 
