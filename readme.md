@@ -2,6 +2,7 @@
 ## 一. Ubuntu, PX4, Gazebo的安装
 2022.7.5: protoc实在识别不到，所幸重装个系统，顺便写个ubuntu18.04安装PX4+ROS+Gazebo的教程.\
 - 本教程在装完系统, 换完镜像源, 打完显卡驱动, 安装完clash后开始记录, 基本与大多数人进程同步. 
+### ROS及PX4环境搭建
 1. 加入ROS安装源\
     `sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'`
 2. 加入密钥\
@@ -15,7 +16,45 @@
     `source ~/.bashrc`
 6. 安装Gazebo\
     `sudo apt install ros-melodic-gazebo9*`
-7. 
+7. 初始化rosdep\
+    先安装rosdep`sudo apt-get install python-rosdep`\
+    `rosdep init`\
+    `rosdep update`\
+    init这一步可能会报错,像这样
+    ```
+    ERROR: cannot download default sources list from:
+    https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/sources.list.d/20-default.list
+    Website may be down.
+     ```
+     解决方法: https://zskitecho.blog.csdn.net/article/details/107852051?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-107852051-blog-105759665.pc_relevant_multi_platform_whitelistv2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1-107852051-blog-105759665.pc_relevant_multi_platform_whitelistv2&utm_relevant_index=1
+8. 安装catkin工具
+    `sudo apt-get install ros-melodic-catkin python-catkin-tools`
+9. 安装mavros
+    `sudo apt install ros-melodic-mavros ros-melodic-mavros-extras`
+10. 安装geographiclib dataset\
+    下载脚本\
+    `wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh`\
+    为脚本添加权限\
+    `chmod +x install_geographiclib_datasets.sh`\
+    执行脚本\
+    `sudo ./install_geographiclib_datasets.sh`\
+    这一步很慢而且没有任何提示, 所以我去睡了一会()
+### PX4仿真工具安装
+11. 利用脚本安装必要的工具链\
+    `wget https://raw.githubusercontent.com/PX4/Firmware/master/Tools/setup/ubuntu.sh`\
+    `wget https://raw.githubusercontent.com/PX4/Firmware/master/Tools/setup/requirements.txt`\
+    `bash ubuntu.sh`\
+    不知道为什么这次装得好慢(可能是因为没报错?)\
+    完成后重启
+12. 创建工作空间\
+    `mkdir -p ~/catkin_ws/src`\
+    `cd ~/catkin_ws/src/`\
+    `catkin_init_workspace`
+11. 下载编译px4\
+    下载代码\
+    `cd ~/catkin_ws/`\
+    `git clone https://github.com/PX4/Firmware`
+
 
 ~~Ubuntu(一个操作系统): CSDN随便看~~\
 ~~PX4(飞控程序)+Gazebo(一个仿真环境): https://www.guyuehome.com/8983~~
