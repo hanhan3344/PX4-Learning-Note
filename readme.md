@@ -62,7 +62,15 @@
     `sudo pip install numpy toml`\
     ti shi sudo: pip：找不到命令 de hua xian an zhuang python-pip\
 13. 开始编译\
-    `make px4_sitl gazebo`
+    `make px4_sitl gazebo_plane`\
+    ruo chu xian cuo wu\
+    `gzclient: symbol lookup error: /usr/lib/x86_64-linux-gnu/libgazebo_common.so.9: undefined symbol: _ZN8ignition10fuel_tools12ClientConfig12SetUserAgentERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE`
+    jie jue fang fa:\
+    `sudo apt upgrade`\
+    zai ci bian yi ji ke cheng gong\
+    `make clean`\
+    `make px4_sitl gazebo_plane`
+    zhi ci , qi dong cheng gong , jiao cheng jie shu
 
 
 
